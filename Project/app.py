@@ -52,12 +52,9 @@ app.route('/post/<string:name>')
 def post(name):
     return render_template('name.html', name=name)
 
-
-
-@app.route("/product")
-def product():
-    return "<h2>Product Price</h2>"
-
+@app.route('/postitem')
+def postitem():
+    return render_template('mainpost.html')
 
 if __name__=="__main__":
     app.run(debug=True)

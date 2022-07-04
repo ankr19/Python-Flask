@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template
+from sqlalchemy import false, true
 
 app = Flask(__name__)
 
@@ -45,16 +46,27 @@ post = [
 def home():
     if request.method=="POST":
         name = request.form["name"]
-        return post(name)
-    return render_template('post.html')
+        password=request.form['password']
+        if validate(name,password):
+            return post(name)
+        return render_template('base.html')
+    return render_template('base.html') 
 
-app.route('/post/<string:name>')
-def post(name):
-    return render_template('name.html', name=name)
+
+@app.route('/post')
+def post():
+    return render_template('post.html');
+
+
 
 @app.route('/postitem')
 def postitem():
     return render_template('mainpost.html')
+
+def validate(name, password):
+    if name=="Anand" and password=="password":
+        return true
+    return false
 
 if __name__=="__main__":
     app.run(debug=True)

@@ -1,18 +1,17 @@
 {% extends "base.html" %}
-
-
 {% block title %} post {% endblock title %}
-
 {% block body %}
-<div class="container">
+<div class="container my-3">
     <form method="POST">
-        <div class="mb-3">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="title" id="title" aria-describedby="title">
             <label for="name" class="form-label">Title Name</label>
-            <input type="text" class="form-control" name="name" id="name" aria-describedby="name">
         </div>
-
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="content" name="content">
+            <label for="floatingInput">Content</label>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-
     </form>
 </div>
 

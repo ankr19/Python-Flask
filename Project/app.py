@@ -53,15 +53,19 @@ def home():
     return render_template('base.html') 
 
 
-@app.route('/post')
+@app.route('/post', methods=["GET","POST"])
 def post():
+    if request.method=="POST":
+        name=request.form["title"]
+        content = request.form['content']
+        return postitem(name,content)
     return render_template('post.html');
 
 
 
-@app.route('/postitem')
-def postitem():
-    return render_template('mainpost.html')
+@app.route('/postitem/<string:title>/<string:content>')
+def postitem(title, content):
+    return render_template('mainpost.html', title=title, content=content)
 
 def validate(name, password):
     if name=="Anand" and password=="password":

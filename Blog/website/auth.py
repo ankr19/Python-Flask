@@ -10,7 +10,9 @@ def login():
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def signup():
     username = request.form.get('username');
-    print(username)
+    email = request.form.get('email');
+    password = request.form.get('password');
+    epassword = request.form.get('epassword');
     return render_template('signup.html')
 
 @auth.route('/logout')

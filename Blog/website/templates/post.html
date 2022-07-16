@@ -1,5 +1,25 @@
 {% extends "base.html" %}
-{% block title %} Home {% endblock title %}
+{% block title %} Home{% endblock title %}
 {% block content %}
-<h2>Hello from Home</h2>
+<h2>{{username}}</h2>
+<h2 class="my-2">Post</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- creating the post for the user and other user -->
+        {% for post in posts %}
+        <div class="col">
+            <div class="card text-dark bg-light mb-3" style="width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text">{{ post.text }}</p>
+                </div>
+                <div class="my-1 card-footer text-muted">
+                    {{post.date_created}}
+                </div>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+    <div class="container">
+        <a class="btn btn-outline-secondary float-end" href="{{url_for('view.home')}}">Back</a>
+    </div>
 {% endblock content %}

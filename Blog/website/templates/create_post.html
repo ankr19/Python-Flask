@@ -1,5 +1,20 @@
 {% extends "base.html" %}
-{% block title %} Home {% endblock title %}
+{% block title %}Post{% endblock title %}
 {% block content %}
-<h2>Hello from Home</h2>
+<p class="my-3">
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Create Post
+    </a>
+</p>
+<div class="collapse" id="collapseExample">
+    <form method="POST">
+        <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-pencil-square"></i></span>
+            <textarea class="form-control" name="text" id="text" aria-label="With textarea"></textarea>
+        </div>
+        <div class="container text-center my-2">
+            <button class="btn btn-outline-primary" type="submit">post</button>
+        </div>
+    </form>
+</div>
 {% endblock content %}

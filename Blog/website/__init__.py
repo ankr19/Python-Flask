@@ -1,5 +1,4 @@
 from os import path
-from venv import create
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -20,7 +19,7 @@ def create_app():
     app.register_blueprint(view, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/auth")
     
-    from .models import User
+    from .models import User, Post
 
     create_database(app=app)
 

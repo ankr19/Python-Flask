@@ -9,7 +9,6 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/home">Home</a>
         </li>
-
         {% if not user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="/auth/login">Login</a>
@@ -20,10 +19,9 @@
       </ul>
     </div>
     {% else %}
-    <form class="d-flex justify-content-end">
+    <form class="d-flex ">
       <a class="btn btn-outline-primary" href="{{url_for('auth.logout')}}">Log Out</a>
     </form>
     {% endif %}
-
   </div>
 </nav>

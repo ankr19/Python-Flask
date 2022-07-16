@@ -1,5 +1,33 @@
 {% extends "base.html" %}
 {% block title %} Home {% endblock title %}
 {% block content %}
-<h2>Hello from {{user.username}}</h2>
+<div class="container">
+    <!-- user name -->
+    <h2>Hello from {{user.username}}</h2>
+    <a class="btn btn-outline-primary my-2" href="{{url_for('view.create_post')}}">Create Post</a>
+
+    <h2 class="my-2">Post</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- creating the post for the user and other user -->
+        {% for post in posts %}
+        <div class="col">
+            <div class="card text-dark bg-light mb-3" style="width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text">{{ post.text }}</p>
+                    <a href="/posts/{{post.user.username}}" class="btn btn-primary">{{ post.user.username }}</a>
+                    {% if user.id == post.user.id %}
+                    <a class="btn btn-outline-primary mx-1" href="/edit-post/{{post.id}}">edit</a>
+                    <a class="btn btn-outline-primary mx-1" href="/delete-post/{{post.id}}">delete</a>
+                    {% endif %}
+                </div>
+                <div class="my-1 card-footer text-muted">
+                    {{post.date_created}}
+                </div>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock content %}

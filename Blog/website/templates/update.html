@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 {% block title %} Update{% endblock title %}
 {% block content %}
-
+<p class="my-3">
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Update Post
+    </a>
+</p>
+<div class="collapse" id="collapseExample">
+    <form action="/update-post/{{post.id}}" method="POST">
+        <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-pencil-square"></i></span>
+            <textarea class="form-control" name="text" id="text" aria-label="With textarea">{{post.text}}</textarea>
+        </div>
+        <div class="container text-center my-2">
+            <button class="btn btn-outline-primary" type="submit">Update</button>
+        </div>
+    </form>
+</div>
 {% endblock content %}

@@ -16,8 +16,8 @@
                     <p class="card-text">{{ post.text }}</p>
                     <a href="/posts/{{post.user.username}}" class="btn btn-primary">{{ post.user.username }}</a>
                     {% if user.id == post.user.id %}
-                    <a class="btn btn-outline-primary mx-1" href="/update-post/{{post.id}}">edit</a>
-                    <a class="btn btn-outline-primary mx-1" href="/delete-post/{{post.id}}">delete</a>
+                    <a class="btn btn-outline-primary mx-1" href="/update-post/{{post.id}}"><i class="bi bi-pencil-square"></i></a>
+                    <a class="btn btn-outline-primary mx-1" href="/delete-post/{{post.id}}"><i class="bi bi-trash-fill"></i></a>
                     {% endif %}
                 </div>
                 <div class="my-1 card-footer text-muted">

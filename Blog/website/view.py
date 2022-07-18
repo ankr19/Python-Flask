@@ -25,7 +25,7 @@ def create_post():
             post = Post(text=text, author=current_user.id)
             db.session.add(post)
             db.session.commit()
-            flash("posted create!", category="success")
+            flash("Posted Created!", category="success")
             return redirect(url_for('view.home'))
     return render_template('create_post.html', user=current_user)
 
@@ -39,22 +39,26 @@ def delete_post(id):
     if not post:
         flash('Post does not exist.', category="error")
     elif current_user.id != post.author:
-        flash('you do not have authorized to delete this post', category="error")
+        flash('You do not have authorized to delete this post', category="error")
     else:
         db.session.delete(post)
         db.session.commit()
         flash('Post deleted', category='success')
     return redirect(url_for('view.home'))
 
-@view.route('/update-post/<int:id>')
+@view.route('/update-post/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update_post(id):
-    id = int(id)
     post = Post.query.filter_by(id=id).first()
-    db.session.add(post)
-    db.session.commit()
-    flash('Post Updated', category='success')
-    return render_template('update.html',post=post)
+    if request.method == "POST":
+        text = request.form.get('text')
+        post = Post.query.filter_by(id=id).first()
+        post.text=text
+        db.session.add(post)
+        db.session.commit()
+        flash("Posted Updated!", category="success")
+        return redirect(url_for('view.home'))
+    return render_template('update.html',post=post, user=current_user)
 
 
 @view.route('/posts/<string:username>')

@@ -1,0 +1,9 @@
+{
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.includeLanguages": {
+        "html": "css",
+        "react": "css",
+        "JavaScript": "css",
+        "python": "css"
+    }
+}
